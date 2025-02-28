@@ -1,46 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Deepgram Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speasy AI</title>
     <script src="https://cdn.jsdelivr.net/npm/@deepgram/sdk@v3.0.0"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body class="">
-    <div class="box">
-      <div class="object" id="record">
-        <div class="outline"></div>
-        <div class="outline" id="delayed"></div>
-        <div class="button"></div>
-        <div class="button" id="circlein">
-          <svg
-            class="mic-icon"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 1000 1000"
-            enable-background="new 0 0 1000 1000"
-            xml:space="preserve"
-            style="fill:#000000"
-          >
-            <g>
-              <path
-                d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z"
-              />
-            </g>
-          </svg>
+  <body>
+    <div class="container">
+      <nav class="navigation">
+        <div class="nav-logo">SPEASY AI</div>
+        <div class="nav-links">
+          <a href="#" class="active">HOME</a>
+          <a href="#">ABOUT</a>
+          <a href="#">CONTACT</a>
         </div>
+      </nav>
+
+      <main class="content">
+        <div class="hero-section">
+          <h1 class="hero-title">AI-Powered Interview Assistant</h1>
+          <p class="hero-subtitle">Upload your resume and get real-time feedback on your interview responses</p>
+        </div>
+
+        <div class="upload-section content-container">
+          <h2>Upload Your Resume</h2>
+          <div class="file-upload">
+            <label for="resume-upload" class="upload-button">
+              <i class="fas fa-upload"></i> Select File
+            </label>
+            <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" hidden />
+            <span id="file-name">No file selected</span>
+          </div>
+        </div>
+
+        <div class="interview-section content-container">
+          <div class="record-container">
+            <div class="object" id="record">
+              <div class="button">
+                <div class="button-inner">
+                  <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                  </svg>
+                </div>
+              </div>
+              <p class="record-label">Click to start recording</p>
+            </div>
+          </div>
+
+          <div class="visualizer-container">
+            <canvas id="audio-visualizer"></canvas>
+          </div>
+
+          <div class="transcript-container">
+            <h3>Transcript</h3>
+            <div id="captions" class="captions">
+              <span class="placeholder">Your speech will appear here...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="response-section content-container">
+          <h3>AI Response</h3>
+          <div id="ai-response" class="ai-response">
+            <span class="placeholder">AI response will appear here after you speak...</span>
+          </div>
+        </div>
+      </main>
+
+      <div class="background-waves">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+        <div class="wave wave5"></div>
       </div>
-    </div>
-    <div class="captions" id="captions">
-      <span>Captions by Deepgram</span>
     </div>
 
     <script src="client.js"></script>

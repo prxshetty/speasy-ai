@@ -1,2 +1,6 @@
+.DS_Store
+transcripts
 node_modules
 .env
+transcripts.db
+
